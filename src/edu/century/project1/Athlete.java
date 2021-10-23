@@ -45,7 +45,12 @@ public class Athlete {
 	}
 	
 	public void  setName(String input) {
+		if (input.length() < 1) {
+			name = "DEFAULT";
+		}
+		else {
 		name = input;
+		}
 	}
 	
 	public void  setSpecialty(Sport input) {
@@ -53,18 +58,46 @@ public class Athlete {
 	}
 	
 	public void  setSkill(int input) {
+		if (input < 0 || input > 10) {
+			skill = 0;
+		}
+		else {
 		skill = input;
+		}
 	}
 	
 	public void setMedals(int input) {
+		if (input < 0) {
+			medals = 0;
+		}
+		else {
 		medals = input;
+		}
 	} 
 	
+	@Override
 	public String toString() {
-		return ""; //TODO  Finish toString Method
+		return "Name: " + name + "/nCountry: " + homeCountry + "/nSpecialty: " + specialty + "/nSkill Level: " + skill + "/nGold Medals: " + medals; //TODO  Finish toString Method
 	}
 	 
-	public boolean equals(Object) {
+	public boolean equals(Object otherObj) {
+		if (otherObj == null) {
+			return false;
+			}
+		else if (getClass() != otherObj.getClass()) {
+			return false;
+		}
+		else {
+			Athlete otherAthelete = (Athlete)otherObj;
+			return (this.name.equals(otherAthelete.getName())) && (this.homeCountry.equals(otherAthelete.getHomeCountry())) && 
+					(this.specialty.equals(otherAthelete.getSpecialty())) && (this.skill == otherAthelete.getSkill()) &&(this.medals == otherAthelete.getMedal()); 
+		}
+		
 		// TODO finish .equals method
 	}
-}
+
+
+	}
+
+	
+
