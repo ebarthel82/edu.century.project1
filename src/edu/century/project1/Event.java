@@ -48,9 +48,13 @@ public class Event {
 		return athletes;
 	}
 	public void setAthlete(Athlete[] userInput) {
+		if (userInput.length < 1) {
+			System.out.println("ERROR EVENT MUST HAVE AT LEAST ONE PARTICIPANT");
+		}
 		for (int i = 0; i < userInput.length; i++) {
 			athletes[i] = userInput[i];
 		}
+		
 	}
 	public String toString() {
 		return "Event Name: " + name + "/nVenue: " + venue + "/nSport: " + sport + "/nAthletes: " + athletes;
